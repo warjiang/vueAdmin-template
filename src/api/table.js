@@ -7,3 +7,13 @@ export function getList(params) {
     params
   })
 }
+
+export function getQuestions(page = 1, size = 10) {
+  return fetch({
+    url: '/questions/list',
+    method: 'post',
+    params: {
+      page, size
+    }
+  })
+}
