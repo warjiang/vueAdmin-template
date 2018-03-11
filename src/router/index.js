@@ -23,6 +23,7 @@ const Question = _import('table/questions')
 const Applications1 = _import('table/applications1')
 const Applications2 = _import('table/applications2')
 const Users = _import('table/users')
+const Salary = _import('table/salary')
 const Edit = _import('table/edit')
 const Add = _import('table/add')
 const Competition = _import('page/competition')
@@ -106,7 +107,8 @@ export const asyncRouterMap = [
     children: [
       { path: '1', component: Applications1, name: '教师申请中', meta: { role: ['admin'] }},
       { path: '2', component: Applications2, name: '教师申请通过', meta: { role: ['admin'] }},
-      { path: '3', component: Users, name: '学生浏览', meta: { role: ['admin'] }}
+      { path: '3', component: Users, name: '学生浏览', meta: { role: ['admin'] }},
+      { path: '4', component: Salary, name: '教师薪水', meta: { role: ['admin'] }}
     ]
   },
   {

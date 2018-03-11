@@ -37,7 +37,7 @@ service.interceptors.response.use(
         type: 'error',
         duration: 5 * 1000
       })
-      if (res.message === '签名认证失败') {
+      if (res.message === '签名认证失败' || res.message === '未登录用户') {
         setTimeout(function() {
           removeToken()
           location.reload()

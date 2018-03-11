@@ -71,7 +71,7 @@
         <template scope="scope">
           <el-button v-if="scope.row.status!='published'" size="small" type="success" @click="handleModifyQuestions(scope.row.questionId,'edit')">编辑
           </el-button>
-          <el-button v-if="scope.row.status!='deleted'" size="small" type="danger" @click="handleModifyQuestions(scope.$index,'delete')">删除
+          <el-button v-if="scope.row.status!='deleted'" size="small" type="danger" @click="handleModifyQuestions(scope.$index,'delete',scope.row.questionId)">删除
           </el-button>
         </template>
       </el-table-column>
@@ -283,7 +283,7 @@ export default {
       }
 
     },
-    handleModifyQuestions(questionId, action) {
+    handleModifyQuestions(questionId, action, systemId) {
       if (action === 'edit') {
         // redirect
         this.$router.push({ path: '/questions/edit', query: { questionId: questionId }})
@@ -291,8 +291,9 @@ export default {
         // console.log(this.list)
         // console.log(questionId)
         // this.list.splice(questionId, 1)
-        deleteQuestionById(questionId).then(response => {
-          console.log(response.data)
+        //deleteQuestionById(questionId).then(response => {
+        deleteQuestionById(systemId).then(response => {
+          //console.log(response.data)
           if (response.data === null) {
             this.list.splice(questionId, 1)
             // console.log(this.list)
@@ -307,6 +308,7 @@ export default {
             })
           }
         })
+
       }
     }
   }
